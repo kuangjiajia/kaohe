@@ -1,0 +1,33 @@
+{
+  "name": "weather",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "css-loader": "^0.28.5",
+    "ejs": "^2.5.7",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
+    "loader": "^2.1.1",
+    "mysql": "^2.14.1",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.5",
+    "webpack-dev-server": "^2.7.1"
+  }
+}
