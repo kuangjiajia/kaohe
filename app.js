@@ -6,16 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 var fs = require('fs');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'mysql'
-});
-connection.connect(function() {
-  console.log('connect success!');
-})
-
 var app = express();
 
 // view engine setup
@@ -31,12 +21,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/',(req,res) => {
-  var data;
-  connection.query('SELECT * FROM data',(err,results,fields) => {
-    data = results; 
-    res.render('index',{data});
+    res.render('index');
     res.end();
-  })
 })
 
 
