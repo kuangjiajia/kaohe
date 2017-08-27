@@ -26,18 +26,18 @@ body {
 }
 //头部
 .header {
+    position: relative;
     width: 3.75rem;
     height: 3.14rem;
-    position: relative;
     .background { // 背景
         width: 3.75rem;
         height: 3.14rem;
     } 
     .today-weather { //今日的天气 嘴上部分的content
         position: absolute;
-        width: 100%;
         top: 0.35rem;
         left: 0;
+        width: 100%;
         padding: 0 2.6% 0 3.6%;
         .weather-part { //天气的地区
             line-height: 0.28rem;
@@ -55,14 +55,14 @@ body {
             }
         }
         .update-weather {//更新天气
+            line-height: 0.17rem;
             font-size: 0.10rem;
             color: #fff;
-            line-height: 0.17rem;
         }
         .now-weather {//现在的天气
             margin-top: 0.3rem;
-            color: #fff;
             font-size: 0.16rem;
+            color: #fff;
         }
         .img-now {//现在天气等图片
             position: absolute;
@@ -81,34 +81,38 @@ body {
             display: block;
             overflow: hidden;
             .temperature_l {//温度左边的内容
-                text-shadow: 1px 1px 1px #666;
-                font-size: 0.6rem;
-                color: #fff;
                 float: left;
                 margin-right: 0.05rem;
                 line-height: 0.875rem;
+                text-shadow: 1px 1px 1px #666;
+                font-size: 0.6rem;
+                color: #fff;
             }   
             .temperature_r {//温度右边的内容
                 float: left;
+                line-height: 0.21rem;
+                margin-top: 0.14rem 0 0 0.15rem;
                 color: #fff;
                 text-align: left;
                 font-size: 0.14rem;
-                line-height: 0.21rem;
-                margin-top: 0.14rem 0 0 0.15rem;
                 p {
                     margin-top: 0.26rem;
                 }
             }
         }
         .dating { //今天的日期
+            overflow: hidden;
             font-size: 0.13rem;
             color: #fff;
-            overflow: hidden;
         }
         .twenty-four-forcast { //24小时天气
+            margin: 0.1rem 0 0 0.1rem;
+            width: 0.7rem;
             font-size: 0.12rem;
             color: #ffffff;
-            margin: 0.1rem 0 0 0.1rem;
+            text-align: center;
+            border-radius: 0.05rem;
+            background-color: rgba(0,0,0,0.5);
         }
     }
 }
@@ -117,46 +121,46 @@ body {
     width: 3.75rem;
     height: 1.97rem;//内容的宽高
     .week-day { //哪一天
-        list-style: none;
         width: 100%;
         height: 0.33rem;
+        list-style: none;
         li {
+            float: left;
             width: 0.625rem;
             height: 100%;
             line-height: 0.33rem;
-            float: left;
             font-size: 0.13rem;
             text-align: center;
         }
     }
     .week-weather-img { //每一天对应的天气等图片
-        list-style: none;
         width: 100%;
         height: .33rem;
+        list-style: none;
         li {
+            float: left;
             display: block;
             height: 100%;
             width: 0.575rem;
             padding-left: 0.05rem;
-            float: left;
             text-align: center;
             i {
-                margin-left: 0.1rem;
                 display: block;
+                margin-left: 0.1rem;
                 width: 0.33rem;
                 height: 0.33rem;
             }
         }
     }
     .week-weather-now {//每天对应天气等名称
-        list-style: none;
         width: 100%;
         height: 0.15rem;
+        list-style: none;
         li {
+            float: left;
             width: 0.625rem;
             height: 100%;
             line-height: 0.15rem;
-            float: left;
             font-size: 0.12rem;
             text-align: center;
         }
@@ -170,14 +174,14 @@ body {
         display: none;
     }
     .week-wind { //每一天的风向
-        list-style: none;
         width: 100%;
         height: 0.15rem;
+        list-style: none;
         li{
+            float: left;
             width: 0.625rem;
             height: 100%;
             font-size: 0.12rem;
-            float: left;
             text-align: center;
         }
     }

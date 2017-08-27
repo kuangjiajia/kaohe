@@ -11,7 +11,8 @@ module.exports = {
         loaders: [{test: /\.css$/,loaders: ['style-loader','css-loader']}, //加载css
                   {test: /\.less$/,loaders: ['style-loader','css-loader','less-loader']}, //加载less
                   {test: /\.scss$/,loaders: ['style-loader','css-loader','scss-loader']}, //加载scss文件
-                  {test: /\.js$/,loaders: ['babel-loader']} //加载babel的js文件
+                  {test: /\.js$/,loaders: ['babel-loader']},//加载babel的js文件
+                  {test: /\.png/,loaders: ['file-loader']}
         ]
     }
 }
