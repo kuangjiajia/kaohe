@@ -1,13 +1,21 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mysql = require('mysql');
-var fs = require('fs');
-var app = express();
-
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const fs = require('fs');
+const app = express();
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'mysql'
+});
+connection.connect(function() {
+  console.log('success');
+})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -27,11 +35,10 @@ app.get('/',(req,res) => {
 
 
 app.get('/dt',(req,res) => {
-  console.log(path.join(__dirname,'/public/data.json'));
-  fs.readFile(path.join(__dirname,'/public/data.json'),'utf8',(err,data) => {
-      console.log(data);
-      res.writeHead(200,{'Content-Type':'text/plain,charset=utf8'});
-      res.end(data);
+  connection.query('SELECT * FROM weather',(err,data) => {
+    // console.log(data);
+    res.send(data);
+    res.end();
   })
 })
 
