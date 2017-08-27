@@ -2,17 +2,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
-  <link rel="stylesheet/less" type="text/css" href="/css/demo.less" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+  <meta id="viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1; user-scalable=no;">
 </head>
-<script>
-    var designWidth = 375, rem2px = 100;
-    if(window.innerWidth < 640 ){
-        document.documentElement.style.fontSize = ((window.innerWidth / designWidth) * rem2px) + 'px';
-    }else {
-        document.documentElement.style.fontSize = ((640 / designWidth) * rem2px) + 'px';
-    }
-</script>
 <body>
     <div class='header'>
         <img class='bg' src="images/bj.png" alt="">
@@ -41,120 +32,48 @@
     </div>
     <div class='content'>
         <ul class='date'>
-            <li>昨天</li>
-            <li>星期日</li>
-            <li>星期一</li>
-            <li>星期二</li>
-            <li>星期三</li>
-            <li>星期四</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
         </ul>
         <ul class='weather-img'>
-            <li><img src="images/qing.png" alt="qing"></li>
-            <li><img src="images/baoyu.png" alt="baoyu"></li>
-            <li><img src="images/bingbao.png" alt="bingbao"></li>
-            <li><img src="images/shacengbao.png" alt="shacengbao"></li>
-            <li><img src="images/taifeng.png" alt="taifeng"></li>
-            <li><img src="images/wumai.png" alt="wumai"></li>
+            <li><i class="iconfont">&#xe61a;</i></li>
+            <li><i class="iconfont">&#xe62d;</i></li>
+            <li><i class="iconfont">&#xe610;</i></li>
+            <li><i class="iconfont">&#xe630;</i></li>
+            <li><i class="iconfont">&#xe641;</i></li>
+            <li><i class="iconfont">&#xe642;</i></li>
         </ul>
-        <div class="weather-now">
-            <!-- <% for(var i=1; i < data.length ; i++) {%>
-                <li><%= data[i].weather %></li>
-            <% } %> -->
-        </div>
+        <ul class="weather-now">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
         <ul class='temp-data'> 
-            
+            <li><span></span><b></b></li>
+            <li><span></span><b></b></li>
+            <li><span></span><b></b></li>
+            <li><span></span><b></b></li>
+            <li><span></span><b></b></li>
+            <li><span></span><b></b></li>
+            <li><span></span><b></b></li>
         </ul>
         <canvas class='canvas'></canvas>   
         <ul class='wind'>
-            <li>东风</li>
-            <li>南风</li>
-            <li>西风</li>
-            <li>东风</li>
-            <li>北风</li>
-            <li>东风</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
         </ul>
     </div>
 </body>
-<script src='/javascripts/ejs.min.js'></script>
 <script src='/dist/bundle.js'></script> 
-<script>
-    function ajax(obj){
-    obj.type = obj.type || "get";
-    obj.async = obj.async || true;
-    obj.data = obj.data || null;
-    if (window.XMLHttpRequest){
-        var ajax = new XMLHttpRequest();
-    }else{
-        var ajax = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    if (obj.type == "post"){
-        ajax.open(obj.type,obj.url,obj.async);
-        ajax.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        var data = toData(obj.data);
-        ajax.send(data);
-    }else{
-        var url = obj.url+"?"+toData(obj.data);
-        ajax.open(obj.type,url,obj.async);
-        ajax.send();
-    }
-
-    ajax.onreadystatechange = function (){
-        if (ajax.readyState == 4){
-                if (ajax.status>=200&&ajax.status<300 || ajax.status==304){
-                    if (obj.success){
-                        obj.success(ajax.responseText);
-                    }
-                }else{
-                    if (obj.error){
-                        obj.error(ajax.status);
-                    }
-                }
-            }
-      }    
-}
-
-function toData(obj){
-    if (obj == null){
-        return obj;
-    }
-    var arr = [];
-    for (var i in obj){
-        var str = i+"="+obj[i];
-        arr.push(str);
-    }
-    return arr.join("&");
-}
-
-
-    
-ajax({
-    'url':'/dt',
-    'success': function(data) {
-        var data = JSON.parse(data);
-        console.log(data);
-        let weather_now = document.querySelector('.weather-now'),
-            temp_data = document.querySelector('.temp-data'),
-            now_weather = document.querySelector('.now-weather'),
-            weather_change = document.querySelector('.weather-change'),
-            template_weather = "<% for(var i=1; i < data.length ; i++) {%><li><%= data[i].weather %></li><% } %>",
-            template_data = "<% for(var i=0; i < data.length; i++) {%><li><span><%= data[i].max_temp %></span><b><%= data[i].min_temp %></b></li><% } %>",
-            template_weather_now = "<%= data[0].weather%>",
-            template_weather_change = "<%= data[0].min_temp%>~<%= data[0].max_temp%>",
-            html_weather_now = ejs.render(template_weather_now,data),
-            html_weather = ejs.render(template_weather,data),
-            html_data = ejs.render(template_data,data),
-            html_weather_change = ejs.render(template_weather_change,data);
-
-            now_weather.innerHTML = html_weather_now;
-            weather_now.innerHTML = html_weather;
-            temp_data.innerHTML = html_data;
-            weather_change.innerHTML = html_weather_change;
-            draw();
-    }
-})
-
-
-</script>
-<script src='/javascripts/canvas.js'></script>
-
 </html>

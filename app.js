@@ -15,8 +15,6 @@ var connection = mysql.createConnection({
 connection.connect(function() {
   console.log('connect success!');
 })
-var index = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -32,7 +30,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/users', users);
 app.get('/',(req,res) => {
   var data;
   connection.query('SELECT * FROM data',(err,results,fields) => {

@@ -1,4 +1,4 @@
-function ajax(obj){
+window.ajax = ajax = function(obj){
     obj.type = obj.type || "get";
     obj.async = obj.async || true;
     obj.data = obj.data || null;
@@ -30,11 +30,10 @@ function ajax(obj){
                     }
                 }
             }
-      }    
+      }   
 }
 
-
-function toData(obj){
+window.toData = toData = function(obj) {
     if (obj == null){
         return obj;
     }
@@ -46,8 +45,6 @@ function toData(obj){
     return arr.join("&");
 }
 
-
-    
 ajax({
     'url':'/dt',
     'success': function(data) {
@@ -57,20 +54,25 @@ ajax({
             temp_data = document.querySelector('.temp-data'),
             now_weather = document.querySelector('.now-weather'),
             weather_change = document.querySelector('.weather-change'),
-            template_weather = "<% for(var i=1; i < data.length ; i++) {%><li><%= data[i].weather %></li><% } %>",
-            template_data = "<% for(var i=0; i < data.length; i++) {%><li><span><%= data[i].max_temp %></span><b><%= data[i].min_temp %></b></li><% } %>",
-            template_weather_now = "<%= data[0].weather%>",
-            template_weather_change = "<%= data[0].min_temp%>~<%= data[0].max_temp%>",
-            html_weather_now = ejs.render(template_weather_now,data),
-            html_weather = ejs.render(template_weather,data),
-            html_data = ejs.render(template_data,data),
-            html_weather_change = ejs.render(template_weather_change,data);
+            weatherList = document.querySelectorAll('.weather-now li'),
+            MaxList = document.querySelectorAll('.temp-data li span'),
+            MinList = document.querySelectorAll('.temp-data li b'),
+            dateList = document.querySelectorAll('.date li'),
+            windList = document.querySelectorAll('.wind li');
 
-            now_weather.innerHTML = html_weather_now;
-            weather_now.innerHTML = html_weather;
-            temp_data.innerHTML = html_data;
-            weather_change.innerHTML = html_weather_change;
+            now_weather.innerText = data[0].weather;
+            weather_change.innerText = data[0].min_temp + '~' + data[0].max_temp;
+            for(var i = 0 ; i < 6 ; i++) {
+                weatherList[i].innerText = data[i+1].weather;
+                dateList[i].innerText = data[i+1].date;
+                windList[i].innerText = data[i+1].wind;
+            }
+            for(var i = 0 ; i < 7 ; i ++) {
+                MaxList[i].innerText = data[i].max_temp;
+                MinList[i].innerText = data[i].min_temp;
+            }
             draw();
     }
 })
+
 
