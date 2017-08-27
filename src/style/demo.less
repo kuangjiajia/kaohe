@@ -1,7 +1,13 @@
+//把所有元素的默认padding margin设为0
 * {
     padding: 0px;
     margin: 0px;
 }
+//禁止缩放
+body {
+    overflow: hidden;
+}
+// 引入iconfont
 @font-face {
     font-family: 'iconfont';  /* project id 397475 */
     src: url('//at.alicdn.com/t/font_397475_zadkqs68rcjcq5mi.eot');
@@ -10,6 +16,7 @@
     url('//at.alicdn.com/t/font_397475_zadkqs68rcjcq5mi.ttf') format('truetype'),
     url('//at.alicdn.com/t/font_397475_zadkqs68rcjcq5mi.svg#iconfont') format('svg');
 }
+//设置iconfont的默认样式，witdh,font-size等
 .iconfont{
     font-family:"iconfont" !important;
     font-size: .25rem;
@@ -17,25 +24,26 @@
     height: .33rem;
     font-style:normal;
 }
+//头部
 .header {
     width: 3.75rem;
     height: 3.14rem;
     position: relative;
-    .bg {
+    .background { // 背景
         width: 3.75rem;
         height: 3.14rem;
-    }
-    .today-weather {
+    } 
+    .today-weather { //今日的天气 嘴上部分的content
         position: absolute;
         width: 100%;
         top: 0.35rem;
         left: 0;
         padding: 0 2.6% 0 3.6%;
-        .weather-part {
+        .weather-part { //天气的地区
             line-height: 0.28rem;
             margin-top: 0.07rem;
             overflow: hidden;
-            h1{
+            h1{ //城市
                 float: left;
                 font-size: .24rem;
                 color: #fff;
@@ -46,33 +54,33 @@
                 color: #fff;
             }
         }
-        .update-weather {
+        .update-weather {//更新天气
             font-size: 0.10rem;
             color: #fff;
             line-height: 0.17rem;
         }
-        .now-weather {
+        .now-weather {//现在的天气
             margin-top: 0.3rem;
             color: #fff;
             font-size: 0.16rem;
         }
-        .img-now {
+        .img-now {//现在天气等图片
             position: absolute;
             top: .5rem;
             left: 0.8rem;
             width: 0.75rem;
             height: 0.75rem;
-            .iconfont {
+            .iconfont { //现在天气等图标
                 display: block;
                 width: 0.75rem;
                 height: 0.75rem;
                 font-size: 0.75rem;
             }
         }
-        .temperature {
+        .temperature { // 温度
             display: block;
             overflow: hidden;
-            .temperature_l {
+            .temperature_l {//温度左边的内容
                 text-shadow: 1px 1px 1px #666;
                 font-size: 0.6rem;
                 color: #fff;
@@ -80,7 +88,7 @@
                 margin-right: 0.05rem;
                 line-height: 0.875rem;
             }   
-            .temperature_r {
+            .temperature_r {//温度右边的内容
                 float: left;
                 color: #fff;
                 text-align: left;
@@ -92,12 +100,12 @@
                 }
             }
         }
-        .dating {
+        .dating { //今天的日期
             font-size: 0.13rem;
             color: #fff;
             overflow: hidden;
         }
-        .wholeDay-forcast {
+        .twenty-four-forcast { //24小时天气
             font-size: 0.12rem;
             color: #ffffff;
             margin: 0.1rem 0 0 0.1rem;
@@ -107,9 +115,8 @@
 
 .content {
     width: 3.75rem;
-    height: 1.97rem;
-    // background-color: red;
-    .date {
+    height: 1.97rem;//内容的宽高
+    .week-day { //哪一天
         list-style: none;
         width: 100%;
         height: 0.33rem;
@@ -122,7 +129,7 @@
             text-align: center;
         }
     }
-    .weather-img {
+    .week-weather-img { //每一天对应的天气等图片
         list-style: none;
         width: 100%;
         height: .33rem;
@@ -141,7 +148,7 @@
             }
         }
     }
-    .weather-now {
+    .week-weather-now {//每天对应天气等名称
         list-style: none;
         width: 100%;
         height: 0.15rem;
@@ -154,15 +161,15 @@
             text-align: center;
         }
     }
-    .canvas {
+    .canvas { // canvas
         width: 100%;
         height: 0.78rem;
         font-size: 0.16rem;
     }
-    .temp-data {
+    .temp-data { //暂存的数据
         display: none;
     }
-    .wind {
+    .week-wind { //每一天的风向
         list-style: none;
         width: 100%;
         height: 0.15rem;
